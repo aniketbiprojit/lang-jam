@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "ES2018",
+		"module": "CommonJS",
+		"declaration": true,
+		"declarationMap": true,
+		"noEmit": true,
+		"jsx": "react",
+
+		"pretty": true,
+		"sourceMap": true,
+
+		/* Module Resolution Options */
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"allowJs": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"],
+	"rules": {
+		"no-unused-vars": "off"
+	}
+}
