@@ -1,16 +1,24 @@
 {
-  "name": "ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.ts",
-  "scripts": {
-    "start": "nodemon -x ts-node src/index.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.4",
-    "ts-node": "^8.10.2"
-  }
+	"name": "ts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "src/index.ts",
+	"scripts": {
+		"start": "nodemon -x ts-node src/index.ts file  "
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"husky": "^4.2.5",
+		"nodemon": "^2.0.4",
+		"prettier": "^2.0.5",
+		"pretty-quick": "^2.0.1",
+		"ts-node": "^8.10.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	}
 }
