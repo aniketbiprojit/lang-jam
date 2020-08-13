@@ -60,8 +60,13 @@ export default class Scanner {
 			case '*':
 				this.addToken(TokenType.STAR)
 				break
+			case '\n':
+			case '\t':
+			case '\r':
+				break
 			default:
-				console.log('undefined identifier')
+				// console.error(char.charCodeAt(0))
+				this.addToken(TokenType.ERROR, typeof char)
 				break
 		}
 	}
@@ -90,6 +95,6 @@ export default class Scanner {
 	 * return current > source
 	 */
 	private isAtEnd() {
-		return this.current > this.source.length
+		return this.current >= this.source.length
 	}
 }

@@ -10,13 +10,13 @@ interface RunInterface {
 	/**
 	 * Error Flag.
 	 */
-    HadError: boolean
-    
+	HadError: boolean
+
 	/**
 	 * Array of tokens.
 	 */
-    Tokens: Array<Token>
-    
+	Tokens: Array<Token>
+
 	/**
 	 * Main function
 	 * @function
@@ -32,7 +32,7 @@ abstract class AbstractRun implements RunInterface {
 	public HadError: boolean = false
 	public Tokens: Array<Token> = []
 	main() {}
-	protected runFile(file_path: string):void {}
+	protected runFile(file_path: string): void {}
 }
 
 /**
@@ -54,11 +54,11 @@ export class Run extends AbstractRun {
 		this.run(readFileSync('src/' + file_path).toString())
 	}
 
-	private run(data: string):void {
+	private run(data: string): void {
 		this.Tokens = new Scanner(data).scanTokens()
 
 		for (const token of this.Tokens) {
-			console.log(token.toString())
+			console.log(token)
 		}
 	}
 }
