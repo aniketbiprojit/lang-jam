@@ -64,7 +64,7 @@ export default class Scanner {
 				this.addToken(TokenType.STAR)
 				break
 			case '!':
-				this.addToken(this.match('=') ? TokenType.BANG_EQUAL : TokenType.BANG)
+				this.addToken(this.match('=') ? TokenType.NOT_EQUAL : TokenType.NOT)
 				break
 			case '=':
 				this.addToken(this.match('=') ? TokenType.EQUAL_EQUAL : TokenType.EQUAL)
