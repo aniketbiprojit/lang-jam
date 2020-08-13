@@ -21,6 +21,9 @@ export default class Scanner {
 			this.start = this.current
 			this.scanToken()
 		}
+
+		this.tokens.push(new Token(TokenType.EOF, '', null, this.line))
+
 		return this.tokens
 	}
 
@@ -65,7 +68,6 @@ export default class Scanner {
 			case '\r':
 				break
 			default:
-				// console.error(char.charCodeAt(0))
 				this.addToken(TokenType.ERROR, typeof char)
 				break
 		}
@@ -80,7 +82,7 @@ export default class Scanner {
 		}
 		let text = this.source.substring(this.start, this.current)
 
-		this.tokens.push(new Token({ type: type, lexeme: text, literal: literal, line: this.line }))
+		this.tokens.push(new Token(type, text, literal, this.line))
 	}
 
 	/**
@@ -95,6 +97,6 @@ export default class Scanner {
 	 * return current > source
 	 */
 	private isAtEnd() {
-		return this.current >= this.source.length
+		return this.current > this.source.length - 1
 	}
 }

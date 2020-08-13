@@ -16,11 +16,11 @@ export class Token implements TokenInterface {
 	public literal: any
 	public line: number
 
-	constructor(token: TokenInterface) {
-		this.type = token.type
-		this.lexeme = token.lexeme
-		this.literal = token.literal
-		this.line = token.line
+	constructor(type: TokenType, lexeme: string, literal: any, line: number) {
+		this.type = type
+		this.lexeme = lexeme
+		this.literal = literal
+		this.line = line
 	}
 
 	public toString() {
