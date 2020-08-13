@@ -63,9 +63,24 @@ export default class Scanner {
 			case '*':
 				this.addToken(TokenType.STAR)
 				break
-			case '\n':
+			case '!':
+				this.addToken(this.match('=') ? TokenType.BANG_EQUAL : TokenType.BANG)
+				break
+			case '=':
+				this.addToken(this.match('=') ? TokenType.EQUAL_EQUAL : TokenType.EQUAL)
+				break
+			case '<':
+				this.addToken(this.match('=') ? TokenType.LESS_EQUAL : TokenType.LESS)
+				break
+			case '>':
+				this.addToken(this.match('=') ? TokenType.GREATER_EQUAL : TokenType.GREATER)
+				break
 			case '\t':
 			case '\r':
+			case ' ':
+				break
+			case '\n':
+				this.line++
 				break
 			default:
 				this.addToken(TokenType.ERROR, typeof char)
@@ -91,6 +106,20 @@ export default class Scanner {
 	private advance(): string {
 		this.current++
 		return this.source[this.current - 1]
+	}
+
+	/**
+	 * Check next intermediate character.
+	 * If ! is encountered checked for != or !
+	 */
+	private match(expected: string): boolean {
+		if (this.isAtEnd()) {
+			return false
+		}
+		if (this.source[this.current] != expected) return false
+
+		this.current++
+		return true
 	}
 
 	/**
